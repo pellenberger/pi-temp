@@ -29,3 +29,8 @@ http://raspberrypi.stackexchange.com/questions/26623/ds18b20-not-listed-in-sys-b
 http://www.framboise314.fr/mesure-de-temperature-1-wire-ds18b20-avec-le-raspberry-pi/
 
 ### Database
+
+* Install sqlite3 using `apt-get install sqlite3`
+* Useful :   
+Several sqlite manipulations (dump, using with Python, etc.) : https://doc.ubuntu-fr.org/sqlite   
+SQLite Documentation : http://www.sqlite.org/docs.html
