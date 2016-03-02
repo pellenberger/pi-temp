@@ -25,6 +25,7 @@ http://www.manuel-esteban.com/raspi-capteur-de-temperature-ds18b20/
 http://raspberrypi.stackexchange.com/questions/26623/ds18b20-not-listed-in-sys-bus-w1-devices   
 (perhaps execute the two `modprobe` commands one more time)
 * Temperature can be found in file `/sys/bus/w1/devices/<sensor_id>/w1_slave`
-* For further information about how GPIO is working  http://www.framboise314.fr/mesure-de-temperature-1-wire-ds18b20-avec-le-raspberry-pi/
+* For further information about how GPIO is working :   
+http://www.framboise314.fr/mesure-de-temperature-1-wire-ds18b20-avec-le-raspberry-pi/
 
 ### Database
