@@ -8,6 +8,7 @@ Goal : having a Raspberry Pi configured to get temperature from a sensor, save i
 * Install Raspbian using NOOBS  
 https://www.raspberrypi.org/help/noobs-setup/
 * After install, when on desktop, use "Raspberry Pi Configuration" utility to change boot, auto login, localisation, etc.
+* Clone this project (base for further commands)
 * Optional : configure static IP address on eth0 interface  
 **Attention** : see file `/etc/network/interfaces` -> `/etc/dhcpcd.conf`  
 http://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address  
@@ -31,6 +32,17 @@ http://www.framboise314.fr/mesure-de-temperature-1-wire-ds18b20-avec-le-raspberr
 ### Database
 
 * Install sqlite3 using `apt-get install sqlite3`
+* ...
 * Useful :   
 Several sqlite manipulations (dump, using with Python, etc.) : https://doc.ubuntu-fr.org/sqlite   
 SQLite Documentation : http://www.sqlite.org/docs.html
+
+### Python scripts
+
+Supported version is 2.7.9
+
+* Be sure that pip is already installed (must be the case with Python 2.7.9 and above)
+* Install Firebase related libraries using :   
+`sudo pip install requests`   
+`sudo pip install python-firebase`
+* ...
