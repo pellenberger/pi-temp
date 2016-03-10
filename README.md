@@ -32,7 +32,9 @@ http://www.framboise314.fr/mesure-de-temperature-1-wire-ds18b20-avec-le-raspberr
 ### Database
 
 * Install sqlite3 using `apt-get install sqlite3`
-* ...
+* Create database in project root : `sqlite3 pi-temp.db`
+* In sqlite, import table *measure* : `.read measure.sql`
+* Exit sqlite using `.exit`
 * Useful :   
 Several sqlite manipulations (dump, using with Python, etc.) : https://doc.ubuntu-fr.org/sqlite   
 SQLite Documentation : http://www.sqlite.org/docs.html
@@ -43,9 +45,11 @@ Supported version is 2.7.9
 
 * The three scripts to be executed are :  
 `pi-temp-ping.py`   
-...
+`pi-temp-measure.py`   
+`pi-temp-push.py`   
 * Add a cron job for each executable scripts to executed at reboot  
 Example : `@reboot python /home/pellenberger/pi-temp/pi-temp-ping.py &`   
 https://www.raspberrypi.org/documentation/linux/usage/cron.md   
 In case of issues :   
-http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work
+http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work   
+* Customize configuration in `conf.py` (most important : **sensor id**)
