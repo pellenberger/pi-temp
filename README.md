@@ -48,7 +48,7 @@ Supported version is 2.7.9
 `pi-temp-measure.py`   
 `pi-temp-push.py`   
 * Add a cron job for each executable scripts to executed at reboot  
-Example : `@reboot python /home/pellenberger/pi-temp/pi-temp-ping.py &`   
+Example : `@reboot python /home/pi/pi-temp/pi-temp-ping.py &`   
 https://www.raspberrypi.org/documentation/linux/usage/cron.md   
 In case of issues :   
 http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work   
