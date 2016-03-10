@@ -26,9 +26,11 @@ def get_current_time():
 
 if __name__ == '__main__':
 
-	while True:
-		configure_log(logging, 'pi-temp-ping.log')
+	configure_log(logging, 'pi-temp-ping.log')
+
+	while True:		
 		last_ping = json.dumps({'ip':get_ip_address(), 'datetime':get_current_time(), 'delay':DELAY_PING})
+
 		try:
 			requests.put(FIREBASE_URL + 'lastPing.json', last_ping)		
 		except:
