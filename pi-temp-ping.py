@@ -8,7 +8,8 @@ import json
 import requests
 import sys
 
-from conf import INTERFACE, FIREBASE_URL, DELAY_PING, configure_log
+from conf import INTERFACE, FIREBASE_URL, DELAY_PING
+from utils import configure_log, get_current_time
 
 def get_ip_address(): 
 	ip = ''
@@ -20,9 +21,6 @@ def get_ip_address():
 		logging.error('Error when parsing ip address')
 		pass		
 	return ip
-
-def get_current_time():
-	return time.strftime('%d-%m-%Y %H:%M:%S', time.localtime(time.time())) 
 
 if __name__ == '__main__':
 
