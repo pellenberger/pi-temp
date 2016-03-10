@@ -8,7 +8,7 @@ Goal : having a Raspberry Pi configured to get temperature from a sensor, save i
 * Install Raspbian using NOOBS  
 https://www.raspberrypi.org/help/noobs-setup/
 * After install, when on desktop, use "Raspberry Pi Configuration" utility to change boot, auto login, localisation, etc.
-* Clone this project (base for further commands)
+* Clone this Github project (base for further actions and commands)
 * Optional : configure static IP address on eth0 interface  
 **Attention** : see file `/etc/network/interfaces` -> `/etc/dhcpcd.conf`  
 http://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address  
@@ -41,8 +41,11 @@ SQLite Documentation : http://www.sqlite.org/docs.html
 
 Supported version is 2.7.9
 
-* Be sure that pip is already installed (must be the case with Python 2.7.9 and above)
-* Install Firebase related libraries using :   
-`sudo pip install requests`   
-`sudo pip install python-firebase`
-* ...
+* The three scripts to be executed are :  
+`pi-temp-ping.py`   
+...
+* Add a cron job for each executable scripts to executed at reboot  
+Example : `@reboot python /home/pellenberger/pi-temp/pi-temp-ping.py &`   
+https://www.raspberrypi.org/documentation/linux/usage/cron.md   
+In case of issues :   
+http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work
