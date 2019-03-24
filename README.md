@@ -44,9 +44,9 @@ SQLite Documentation : http://www.sqlite.org/docs.html
 Supported version is 2.7.9
 
 * The three scripts to be executed are :  
-`pi-temp-ping.py`   
-`pi-temp-measure.py`   
-`pi-temp-push.py`   
+`ping.py`   
+`measure.py`   
+`push.py`   
 * Add a cron job for each executable scripts to be executed at reboot  
 https://www.raspberrypi.org/documentation/linux/usage/cron.md   
 Example : `@reboot python /home/pi/pi-temp/pi-temp-ping.py &`   
