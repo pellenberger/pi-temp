@@ -38,7 +38,7 @@ def save_db(temp):
 
 if __name__ == '__main__':
 
-	configure_log(logging, 'pi-temp-measure.log')
+	configure_log(logging, 'measure.log')
 
 	while True:		
 		temp = get_temp()

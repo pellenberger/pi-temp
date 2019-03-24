@@ -8,7 +8,7 @@ import json
 import requests
 import sys
 
-from conf import INTERFACE, FIREBASE_URL, DELAY_PING, DELAY_MEASURE, DELAY_PUSH
+from conf import INTERFACE, FIREBASE_URL, DELAY_PING, DELAY_MEASURE, DELAY_PUSH, ROOM
 from utils import configure_log, get_current_time
 
 def get_ip_address(): 
@@ -22,15 +22,27 @@ def get_ip_address():
 		pass		
 	return ip
 
+def create_ping_document():
+	return json.dumps(
+		{'fields': {
+			'ip': {'stringValue': get_ip_address()},
+			'datetime': {'stringValue': get_current_time()},
+			'room': {'stringValue': ROOM},
+			'delayPing': {'integerValue': DELAY_PING},
+			'delayMeasure': {'integerValue': DELAY_MEASURE},
+			'delayPush': {'integerValue': DELAY_PUSH},
+			}
+		})
+
 if __name__ == '__main__':
 
-	configure_log(logging, 'pi-temp-ping.log')
+	configure_log(logging, 'ping.log')
 
 	while True:		
-		last_ping = json.dumps({'ip':get_ip_address(), 'datetime':get_current_time(), 'delayPing':DELAY_PING, 'delayMeasure':DELAY_MEASURE, 'delayPush':DELAY_PUSH})
+		ping = create_ping_document()
 
 		try:
-			requests.put(FIREBASE_URL + 'lastPing.json', last_ping)					
+			requests.post(FIREBASE_URL + '/pings', ping)					
 		except:
 			logging.error('Error when executing firebase request')
 			pass

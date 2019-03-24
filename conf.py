@@ -1,12 +1,12 @@
 #!/usr/bin/python2.7
 #-*- coding: utf-8 -*-
 
-INTERFACE='eth0'
-FIREBASE_URL='https://pi-temp.firebaseio.com/'	
+INTERFACE='wlan0'
+FIREBASE_URL='https://firestore.googleapis.com/v1/projects/firebase-pi-temp/databases/(default)/documents'	
 SENSOR_ID='28-000007555095'
-ROOM='kitchen'
+ROOM='office'
 
 # All delays are in seconds
-DELAY_PING=60
-DELAY_MEASURE=60
-DELAY_PUSH=60
+DELAY_PING=10
+DELAY_MEASURE=5
+DELAY_PUSH=10

@@ -22,10 +22,10 @@ def get_unpushed_measures():
 		pass
 	return measures
 
-def push_measure(room, body):
+def push_measure(body):
 	status_code = 0
 	try:
-		response = requests.post(FIREBASE_URL + 'measures/' + room + '.json', body)	
+		response = requests.post(FIREBASE_URL + '/measures', body)	
 		status_code = response.status_code
 	except:
 		logging.error('Error when executing firebase request')
@@ -41,11 +41,21 @@ def update_pushed_measure(id):
 	except: 
 		logging.error('Error when updating pushed measure in database')
 		pass
+
+def create_measure_document(timestamp, datetime, room, temp):
+	return json.dumps({
+		'fields': {
+			'timestamp': {'integerValue': timestamp},
+			'datetime': {'stringValue': datetime},
+			'room': {'stringValue': room},
+			'temp': {'doubleValue': temp},
+		}
+	})
 	
 
 if __name__ == '__main__':
 
-	configure_log(logging, 'pi-temp-push.log')
+	configure_log(logging, 'push.log')
 
 	while True:		
 		measures = get_unpushed_measures()	
@@ -56,8 +66,8 @@ if __name__ == '__main__':
 			datetime = measure[2]
 			room = measure[3]
 			temp = measure[4]
-			body = json.dumps({'timestamp':timestamp, 'datetime':datetime, 'temp':temp})
-			status_code = push_measure(room, body)
+			body = create_measure_document(timestamp, datetime, room, temp)
+			status_code = push_measure(body)
 			if status_code == 200:
 				update_pushed_measure(id)
 
