@@ -49,7 +49,7 @@ Supported version is 2.7.9
 `push.py`   
 * Add a cron job for each executable scripts to be executed at reboot  
 https://www.raspberrypi.org/documentation/linux/usage/cron.md   
-Example : `@reboot python /home/pi/pi-temp/pi-temp-ping.py &`   
+Example : `@reboot python /home/pi/pi-temp/ping.py &`   
 **Attention** : change `PATH` in cron tab file : `PATH=/usr/bin:/bin:/sbin`   
 In case of issues :   
 http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work
