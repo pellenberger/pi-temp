@@ -27,6 +27,7 @@ def create_ping_document():
 		{'fields': {
 			'ip': {'stringValue': get_ip_address()},
 			'datetime': {'stringValue': get_current_time()},
+			'timestamp': {'integerValue': int(time.time())},
 			'room': {'stringValue': ROOM},
 			'delayPing': {'integerValue': DELAY_PING},
 			'delayMeasure': {'integerValue': DELAY_MEASURE},
