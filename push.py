@@ -28,9 +28,16 @@ def push_measure(body):
 		response = requests.post(FIREBASE_URL + '/measures', body)	
 		status_code = response.status_code
 	except:
-		logging.error('Error when executing firebase request')
+		logging.error('Error when pushing measure to firebase')
 		pass
 	return status_code
+
+def push_room(body, room):
+	try:
+		response = requests.post(FIREBASE_URL + '/rooms/?documentId=' + room, body)
+	except:
+		logging.error('Error when pushing room to firebase')
+		pass
 
 def update_pushed_measure(id):
 	try:
@@ -51,7 +58,13 @@ def create_measure_document(timestamp, datetime, room, temp):
 			'temp': {'doubleValue': temp},
 		}
 	})
-	
+
+def create_room_document(room):
+	return json.dumps({
+		'fields': {
+			'name': {'stringValue': room}
+		}
+	})
 
 if __name__ == '__main__':
 
@@ -66,10 +79,12 @@ if __name__ == '__main__':
 			datetime = measure[2]
 			room = measure[3]
 			temp = measure[4]
-			body = create_measure_document(timestamp, datetime, room, temp)
-			status_code = push_measure(body)
+			body_measure = create_measure_document(timestamp, datetime, room, temp)
+			status_code = push_measure(body_measure)
 			if status_code == 200:
 				update_pushed_measure(id)
+			body_room = create_room_document(room)
+			push_room(body_room, room)	
 
 		time.sleep(DELAY_PUSH)	
 
